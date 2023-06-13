@@ -6,6 +6,12 @@ namespace yii1tech\session\dummy;
  * DummySession is a mock for the standard Yii session, which avoids direct operations over PHP standard session.
  *
  * This class is useful for the unit tests as it avoids sending headers and cookies to the StdOut.
+ *
+ * It may also come in handy in API development. For example: if you need to authenticate user via OAuth token, but
+ * keep tracking him in the code using {@see \CWebUser} abstraction.
+ *
+ * @author Paul Klimov <klimov.paul@gmail.com>
+ * @since 1.0
  */
 class DummySession extends \CHttpSession
 {

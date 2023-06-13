@@ -39,3 +39,66 @@ Usage
 -----
 
 This extension provides a mock for the standard Yii session, which avoids direct operations over PHP standard session.
+It introduces `\yii1tech\session\dummy\DummySession` class, which does not actually store session data anywhere, except current
+process's memory, and avoid sending any headers to HTTP response.
+
+This class is useful while writing unit tests, as it avoids sending headers and cookies to the StdOut.
+
+Application configuration example:
+
+```php
+<?php
+
+return [
+    'name' => 'Test Application',
+    'components' => [
+        'session' => [
+            'class' => yii1tech\session\dummy\DummySession::class,
+        ],
+        // ...
+    ],
+    // ...
+];
+```
+
+This extension may also come in handy in API development. For example: if you need to authenticate user via OAuth token, but
+keep tracking him in the code using `\CWebUser` abstraction. In this case you may switch session component "on the fly".
+For example:
+
+```php
+<?php
+
+namespace app\web\controllers;
+
+use app\oauth\AuthUserByTokenFilter;
+use CController;
+use Yii;
+use yii1tech\session\dummy\DummySession;
+
+class ApiController extends CController
+{
+    public function init()
+    {
+        parent::init();
+        
+        Yii::app()->setComponent('session', new DummySession(), false); // mock session, so it does not send any Cookies to the API client
+    }
+    
+    public function filters()
+    {
+        return [
+            AuthUserByTokenFilter::class, // use custom identity to authenticate user via OAuth token inside {@see CWebUser}
+            'accessControl', // now we can freely use standard "access control" filter and other features
+        ];
+    }
+    
+    public function accessRules()
+    {
+        return [
+            // ...
+        ];
+    }
+    
+    // ...
+}
+```

@@ -1,7 +1,7 @@
 This is free software. It is released under the terms of the
 following BSD License.
 
-Copyright © 2022 by Yii1Tech (https://github.com/yii1tech)
+Copyright © 2023 by Yii1Tech (https://github.com/yii1tech)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
