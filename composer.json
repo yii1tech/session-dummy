@@ -1,0 +1,39 @@
+{
+    "name": "yii1tech/session-dummy",
+    "description": "Provides support for Yii1 application runtime configuration",
+    "keywords": ["yii1", "session", "dummy", "mock", "silent", "api"],
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yii1tech/session-dummy/issues",
+        "wiki": "https://github.com/yii1tech/session-dummy/wiki",
+        "source": "https://github.com/yii1tech/session-dummy"
+    },
+    "authors": [
+        {
+            "name": "Paul Klimov",
+            "email": "klimov.paul@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "yiisoft/yii": "~1.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0 || ^7.0 || ^8.0 || ^9.3 || ^10.0.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "yii1tech\\session\\dummy\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "yii1tech\\session\\dummy\\test\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
