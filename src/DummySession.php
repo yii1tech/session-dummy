@@ -37,8 +37,10 @@ class DummySession extends \CHttpSession
      */
     public function open()
     {
-        $this->_id = uniqid();
-        $_SESSION = [];
+        if ($this->_id === null) {
+            $this->_id = uniqid();
+            $_SESSION = [];
+        }
     }
 
     /**

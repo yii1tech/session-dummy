@@ -23,6 +23,24 @@ class DummySessionTest extends TestCase
     /**
      * @depends testOpenSession
      */
+    public function testMultipleOpenSession(): void
+    {
+        $session = new DummySession();
+
+        $session->open();
+
+        $_SESSION['foo'] = 'bar';
+        $sessionId = $session->getSessionID();
+
+        $session->open();
+
+        $this->assertNotEmpty($_SESSION);
+        $this->assertEquals($sessionId, $session->getSessionID());
+    }
+
+    /**
+     * @depends testOpenSession
+     */
     public function testAutoStart(): void
     {
         $session = new DummySession();
