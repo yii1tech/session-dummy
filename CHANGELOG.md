@@ -1,8 +1,8 @@
 Yii1 Dummy Session extension
 ============================
 
-1.0.1 Under Development
------------------------
+1.0.1, June 14, 2023
+--------------------
 
 - Bug: Fixed `$_SESSION` data loss on multiple subsequent `DummySession::open()` invocations (klimov-paul)
 
